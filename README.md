@@ -50,7 +50,7 @@ Dalam implementasi ini, kita menggunakan List Adjacency yang lebih efisien dalam
 
 Sebagai contoh kita dapat membuat graf berikut ini dengan menggunakan `newGraph`
 
-![image.png](output_files/image.png)
+![image.png](assets/image.png)
 
 
 ```python
@@ -235,7 +235,7 @@ psource(dfs)
     
     
 
-![](dfs2.gif)
+![](assets/dfs2.gif)
 
 Sumber GIF : https://takeuforward.org/data-structure/depth-first-search-dfs/
 
@@ -415,7 +415,7 @@ psource(a_star)
     
     
 
-![](gif2.gif)
+![](assets/gif2.gif)
 
 
 ```python
@@ -731,7 +731,7 @@ Algoritma Bellman-Ford digunakan untuk menemukan jalur terpendek dari satu titik
 
 Cara kerja algoritma ini adalah dengan menyimpan jarak terpendek dari node awal ke setiap node lain dalam graf. Pada awalnya, jarak dari node awal ke dirinya sendiri diatur menjadi **0**, sementara jarak ke semua node lainnya diinisialisasi dengan nilai **tak hingga**. Algoritma kemudian secara bertahap memperbarui nilai jarak ini dengan memeriksa setiap sisi (edge) dalam graf dan melihat apakah ada jalur yang lebih pendek melalui node lain. Proses ini terus dilakukan hingga tidak ada lagi pembaruan jarak yang dapat dilakukan, yang menandakan bahwa semua jalur terpendek telah ditemukan.
 
-![image.png](bf.gif)
+![image.png](assets/bf.gif)
 
 
 ```python
@@ -746,7 +746,7 @@ bellman_ford(graph, "A")
 
 
 ## Floyd Warshall Algorithm
-![](fw.gif)
+![](assets/fw.gif)
 
 Algoritma Floyd–Warshall menawarkan pendekatan alternatif untuk menyelesaikan permasalahan pencarian jalur terpendek. Berbeda dengan algoritma lain dalam bab ini, algoritma ini mampu menemukan semua jalur terpendek antara setiap pasangan node dalam satu kali eksekusi.
 
@@ -898,6 +898,3 @@ Floyd-Warshall dapat digunakan untuk menemukan **negative cycle** dengan melihat
 
 **Negative cycle menyebabkan masalah dalam perhitungan jalur terpendek** , tetapi dapat dideteksi menggunakan **Bellman-Ford atau Floyd-Warshall** . Jika ditemukan, siklus negatif bisa dihindari atau dihapus tergantung pada konteks masalah. Jika tidak memungkinkan, maka **tidak ada solusi jalur terpendek yang valid** . 🚀
 
-
-
-![](diagram.png)
