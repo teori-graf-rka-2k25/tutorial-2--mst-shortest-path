@@ -18,28 +18,28 @@ def dijkstra(adj:dict, start):
 	return distances
 
 def a_star(adj: dict, start, goal, heuristic):
-	heap = [(0, start)]
-	distances = {node: float('inf') for node in adj}
-	heuristic_scores = {node: float('inf') for node in adj}
-    
-	distances[start] = 0
-	heuristic_scores[start] = heuristic(start, goal)
+    heap = [(heuristic(start, goal), start)]  # (f, node)
+    distances = {node: float('inf') for node in adj}   # g(n)
+    heuristic_scores = {node: float('inf') for node in adj}
 
-	while heap:
-		curr_dist, curr_node = heapq.heappop(heap)
-		if curr_node == goal:
-			return distances, heuristic_scores  # ✅ Return lengkap
-        
-		for connection in adj[curr_node]:  
-			neighbor, weight = list(connection.items())[0]
-			new_cost = curr_dist + weight
-			if new_cost < distances[neighbor]:
-				distances[neighbor] = new_cost
-				heuristic_scores[neighbor] = heuristic(neighbor, goal)  # ✅ Simpan heuristic score
-				priority = new_cost + heuristic_scores[neighbor]
-				heapq.heappush(heap, (priority, neighbor))
-    
-	return distances, heuristic_scores  # ✅ Return kedua nilai
+    distances[start] = 0
+    heuristic_scores[start] = heuristic(start, goal)
+
+    while heap:
+        curr_f, curr_node = heapq.heappop(heap)
+        if curr_node == goal:
+            return distances, heuristic_scores
+
+        for connection in adj[curr_node]:
+            neighbor, weight = list(connection.items())[0]
+            new_g = distances[curr_node] + weight  
+            if new_g < distances[neighbor]:
+                distances[neighbor] = new_g
+                heuristic_scores[neighbor] = heuristic(neighbor, goal)   # Simpan heuristic score
+                priority = new_g + heuristic_scores[neighbor]
+                heapq.heappush(heap, (priority, neighbor))
+
+    return distances, heuristic_scores # Return kedua nilai
 
 def bellman_ford(adj, start):
 	distances = {node: float('inf') for node in adj}
